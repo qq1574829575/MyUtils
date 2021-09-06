@@ -1,0 +1,21 @@
+{
+    "name": "cathy/my-utils",
+    "description": "php utils",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Cathy\\MyUtils\\": "src/MyUtils/Library"
+        }
+    },
+    "authors": [
+        {
+            "name": "cathy",
+            "email": "1574829575@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php":">=5.6"
+    }
+}
