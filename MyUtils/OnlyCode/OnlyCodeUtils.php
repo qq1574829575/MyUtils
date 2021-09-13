@@ -1,5 +1,5 @@
 <?php
-namespace MyUtils;
+namespace lib\OnlyCode;
 
 class OnlyCodeUtils
 {

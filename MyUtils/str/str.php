@@ -1,7 +1,7 @@
 <?php
 
 
-namespace MyUtils;
+namespace lib\str;
 
 
 class str
