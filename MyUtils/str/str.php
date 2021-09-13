@@ -1,7 +1,7 @@
 <?php
 
 
-namespace MyUtils;
+namespace MyUtils\str;
 
 
 class str
@@ -12,7 +12,7 @@ class str
      * @param $rightStr
      * @return false|string
      */
-    function getSubstr($str, $leftStr, $rightStr)
+    public static function getSubstr($str, $leftStr, $rightStr)
     {
         $left = strpos($str, $leftStr);
         $right = strpos($str, $rightStr,$left);
