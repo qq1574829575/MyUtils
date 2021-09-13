@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Cathy\\MyUtils\\": "src/MyUtils/Library"
+            "MyUtils\\": "src/MyUtils/Library"
         }
     },
     "authors": [
