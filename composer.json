@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "MyUtils\\": "src/MyUtils/Library"
+            "MyUtils\\": "MyUtils/OnlyCode"
         }
     },
     "authors": [
