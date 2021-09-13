@@ -1,5 +1,5 @@
 <?php
-namespace MyUtils;
+namespace MyUtils\upload;
 
 class UploadUtils
 {
