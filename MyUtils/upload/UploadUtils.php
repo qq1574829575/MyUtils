@@ -10,7 +10,7 @@ class UploadUtils
      * @param string[] $limit_file_ext @限制上传文件类型
      * @param bool $use_https_url @返回的url是否使用https
      */
-    public function uploadFiles(
+    public static function uploadFiles(
         $save_upload_path,
         $is_return_url = true,
         $limit_file_size = 20,
@@ -38,11 +38,11 @@ class UploadUtils
                 return array("code"=>0,"message"=>"上传文件大小超过限制");
             }
 
-            if (!$this->checkFileExt($file_ext, $limit_file_ext)){
+            if (!self::checkFileExt($file_ext, $limit_file_ext)){
                 return array("code"=>0,"message"=>"不允许上传.".$file_ext."类型的文件");
             }
 
-            $this->checkPictureFile($file_ext,$file_tmp);
+            self::checkPictureFile($file_ext,$file_tmp);
 
             if(!rename($file_tmp,$save_upload_path ."/". $file_name)) {
                 return array("code"=>0,"message"=>"保存文件失败");
@@ -65,7 +65,7 @@ class UploadUtils
         }
     }
 
-    public function checkFileExt($ext, $limit_ext){
+    public static function checkFileExt($ext, $limit_ext){
         $flag = false;
         foreach ($limit_ext as $_ext){
             if ($ext == $_ext){
@@ -75,23 +75,32 @@ class UploadUtils
         return $flag;
     }
 
-    public function checkPictureFile($file_ext,$file_tmp){
+    public static function checkPictureFile($file_ext,$file_tmp){
         if ($file_ext == "jpg" || $file_ext == "jpeg" || $file_ext == "png" || $file_ext == "gif"){
-            /*if(!getimagesize($file_tmp)){
+            if(!getimagesize($file_tmp)){
                 exit(json_encode(array("code"=>0,"message"=>"上传的图片已损坏！")));
-            }*/
+            }
             if($file_ext == 'jpg' || $file_ext == 'jpeg' ) {
                 $img = imagecreatefromjpeg($file_tmp);
+                if (!$img){
+                    exit(json_encode(array("code"=>0,"message"=>"上传的图片非jpg/jpeg格式")));
+                }
                 imagejpeg($img, $file_tmp, 100);
                 imagedestroy($img);
             }
             if($file_ext == 'png') {
                 $img = imagecreatefrompng($file_tmp);
+                if (!$img){
+                    exit(json_encode(array("code"=>0,"message"=>"上传的图片非png格式")));
+                }
                 imagepng($img, $file_tmp);
                 imagedestroy($img);
             }
             if ($file_ext == 'gif'){
                 $img = imagecreatefromgif($file_tmp);
+                if (!$img){
+                    exit(json_encode(array("code"=>0,"message"=>"上传的图片非gif格式")));
+                }
                 imagepng($img, $file_tmp);
                 imagedestroy($img);
             }
