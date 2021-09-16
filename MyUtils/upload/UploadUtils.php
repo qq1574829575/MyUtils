@@ -81,7 +81,7 @@ class UploadUtils
                 exit(json_encode(array("code"=>0,"message"=>"上传的图片已损坏！")));
             }
             if($file_ext == 'jpg' || $file_ext == 'jpeg' ) {
-                $img = imagecreatefromjpeg($file_tmp);
+                $img = @imagecreatefromjpeg($file_tmp);
                 if (!$img){
                     exit(json_encode(array("code"=>0,"message"=>"上传的图片非jpg/jpeg格式")));
                 }
@@ -89,7 +89,7 @@ class UploadUtils
                 imagedestroy($img);
             }
             if($file_ext == 'png') {
-                $img = imagecreatefrompng($file_tmp);
+                $img = @imagecreatefrompng($file_tmp);
                 if (!$img){
                     exit(json_encode(array("code"=>0,"message"=>"上传的图片非png格式")));
                 }
@@ -97,7 +97,7 @@ class UploadUtils
                 imagedestroy($img);
             }
             if ($file_ext == 'gif'){
-                $img = imagecreatefromgif($file_tmp);
+                $img = @imagecreatefromgif($file_tmp);
                 if (!$img){
                     exit(json_encode(array("code"=>0,"message"=>"上传的图片非gif格式")));
                 }
