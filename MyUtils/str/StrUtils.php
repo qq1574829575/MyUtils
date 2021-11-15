@@ -4,7 +4,7 @@
 namespace lib\str;
 
 
-class str
+class StrUtils
 {
     /**取中间字符串
      * @param $str
